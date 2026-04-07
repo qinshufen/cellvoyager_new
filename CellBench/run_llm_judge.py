@@ -66,7 +66,7 @@ def run_judge(run_name, gt_col):
     """
 
                 response = client.responses.create(
-                    model="gpt-4o",
+                    model="qwen-plus",
                     input=[
                         {
                             "role": "user",

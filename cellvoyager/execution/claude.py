@@ -645,7 +645,7 @@ def run_mcp_server() -> None:
                     from openai import OpenAI
                     client = OpenAI(api_key=openai_key)
                     resp = client.chat.completions.create(
-                        model="gpt-4o-mini", max_tokens=150,
+                        model="qwen-turbo", max_tokens=150,
                         messages=[{"role": "user", "content": prompt}],
                     )
                     return (resp.choices[0].message.content or "").strip()

@@ -258,7 +258,7 @@ def _extract_agent_summary_from_notebook(nb_path: Path) -> str:
             from openai import OpenAI
             client = OpenAI(api_key=openai_key)
             resp = client.chat.completions.create(
-                model="gpt-4o-mini", max_tokens=150,
+                model="qwen-turbo", max_tokens=150,
                 messages=[{"role": "user", "content": prompt}],
             )
             return (resp.choices[0].message.content or "").strip()
@@ -1033,7 +1033,7 @@ def _chat_via_api(messages: list, output_dir: str, analysis_idx: int | None = No
             for m in messages:
                 api_messages.append({"role": m["role"], "content": m["content"]})
             resp = client.chat.completions.create(
-                model="gpt-4o-mini", messages=api_messages, max_tokens=1024,
+                model="qwen-turbo", messages=api_messages, max_tokens=1024,
             )
             return (resp.choices[0].message.content or "").strip()
         except Exception:

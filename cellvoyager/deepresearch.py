@@ -9,8 +9,11 @@ class DeepResearcher:
     Wrapper over OpenAI Deep Research models.
     """
 
-    def __init__(self, openai_api_key: str):
-        self.client = openai.OpenAI(api_key=openai_api_key)
+    def __init__(self, openai_api_key: str,base_url: str = None):
+        qwen_api_key = openai_api_key or os.environ.get("OPENAI_API_KEY")
+        qwen_base_url = base_url or os.environ.get("OPENAI_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
+        self.client = openai.OpenAI(api_key=qwen_api_key,
+            base_url=qwen_base_url,timeout=120.0,max_retries=2)
         # Allow overriding via env; default to lightweight for faster turnaround
         self.model = os.environ.get(
             "DEEP_RESEARCH_MODEL",

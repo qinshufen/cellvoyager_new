@@ -623,7 +623,7 @@ class AnalysisAgent:
                         continue  # Skip this image and continue with others
                         
                 response = self.client.chat.completions.create(
-                    model = "gpt-4o",
+                    model = "qwen-plus",
                     messages = [
                         {"role": "system", "content": "You are a single-cell transcriptomics expert providing feedback on Python code and analysis plan."},
                         {"role": "user", "content": user_content}

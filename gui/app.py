@@ -702,13 +702,15 @@ with st.sidebar:
     st.checkbox("DeepResearch", key="home_use_deepresearch", help="Runs DeepResearch to get additional biological background")
 
     _EXEC_MODEL_OPTIONS = [
+        "legacy",
+        "qwen-plus",
         "claude-sonnet-4-6",
         "claude-opus-4-6",
         "claude-sonnet-4-5",
         "claude-opus-4-5",
         "claude-haiku-4-5",
     ]
-    _DEFAULT_EXEC_MODEL = "claude-sonnet-4-6"
+    _DEFAULT_EXEC_MODEL =  "qwen-plus"
     if st.session_state.get("home_execution_model") not in _EXEC_MODEL_OPTIONS:
         st.session_state["home_execution_model"] = _DEFAULT_EXEC_MODEL
     st.selectbox(
@@ -729,8 +731,8 @@ with st.sidebar:
         "gpt-5.3",
         "o3-mini",
         "o1",
-        "gpt-4o",
-        "gpt-4o-mini",
+        "qwen-plus",
+        "qwen-turbo",
         "kimi-k2.5",
         "kimi-latest",
         "moonshot-v1-128k",

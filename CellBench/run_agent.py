@@ -282,7 +282,7 @@ def run_single_iteration(run_index):
                 }}
                 """
                 response = client.chat.completions.create(
-                    model="gpt-4o",
+                    model="qwen-plus",
                     messages=[
                         {"role": "user", "content": prompt}
                     ],

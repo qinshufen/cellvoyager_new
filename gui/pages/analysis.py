@@ -16,6 +16,14 @@ if _project_root not in sys.path:
 import streamlit as st
 
 import gui.common as g
+if "run_started" not in st.session_state:
+    st.session_state.run_started = False
+
+if "run_proc" not in st.session_state:
+    st.session_state.run_proc = None
+
+if "run_pid" not in st.session_state:
+    st.session_state.run_pid = None
 
 if not st.session_state.get("run_output_dir"):
     # Restore from last run file if session was reset (e.g. after completion transition)

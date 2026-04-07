@@ -21,6 +21,16 @@ _MODEL_ALIASES = {
     "kimi-k2": "moonshot/kimi-k2",
     "kimi-k2.5": "moonshot/kimi-k2.5",
     "kimi-latest": "moonshot/kimi-latest",
+    # 阿里云通义千问模型 - 使用 openai 前缀以兼容 OPENAI_API_KEY + OPENAI_BASE_URL
+    "qwen-turbo": "openai/qwen-turbo",
+    "qwen-plus": "openai/qwen-plus",
+    "qwen-max": "openai/qwen-max",
+    "qwen-max-longcontext": "openai/qwen-max-longcontext",
+    "qwen2.5": "openai/qwen-2.5",
+    "qwen2.5-72b": "openai/qwen-2.5-72b",
+    "qwen2.5-coder": "openai/qwen-2.5-coder",
+    # 兼容用户直接输入模型名
+    "qwen": "openai/qwen-turbo",
 }
 
 
@@ -36,7 +46,7 @@ def _normalize_model_name(model: str) -> str:
     if model.startswith(("kimi-", "moonshot-v1")):
         return f"moonshot/{model}"
     # Known auto-detected OpenAI models
-    _auto_detected = {"gpt-4o", "gpt-4o-mini", "gpt-4", "gpt-3.5-turbo", "o1", "o3-mini", "o3", "o4-mini"}
+    _auto_detected = {"qwen-plus", "qwen-turbo", "gpt-4", "gpt-3.5-turbo", "o1", "o3-mini", "o3", "o4-mini"}
     if model in _auto_detected:
         return model
     # For newer OpenAI models add the prefix

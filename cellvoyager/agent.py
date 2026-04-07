@@ -70,8 +70,9 @@ class AnalysisAgentV2:
         else:
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
             self.output_dir = os.path.join(output_home, "outputs", f"{analysis_name}_{timestamp}")
-
-        self.client = openai.OpenAI(api_key=openai_api_key)
+        openai_api_key = openai_api_key or os.environ.get("OPENAI_API_KEY")
+        openai_base_url = os.environ.get("OPENAI_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
+        self.client = openai.OpenAI(api_key=openai_api_key,base_url = openai_base_url) if openai_api_key else None
 
         self.use_self_critique = use_self_critique
         self.use_VLM = use_VLM
