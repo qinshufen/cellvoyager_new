@@ -18,7 +18,7 @@ from cellvoyager.execution.legacy import IdeaExecutor
 from cellvoyager.logger import Logger
 from cellvoyager.deepresearch import DeepResearcher
 
-AVAILABLE_PACKAGES = "scanpy, scvi, anndata, matplotlib, numpy, seaborn, pandas, scipy"
+AVAILABLE_PACKAGES = "scanpy, anndata, matplotlib, numpy, seaborn, pandas, scipy"
 
 
 class AnalysisAgentV2:
@@ -26,9 +26,9 @@ class AnalysisAgentV2:
         self,
         h5ad_path,
         paper_summary_path,
-        openai_api_key,
         model_name,
         analysis_name,
+        openai_api_key=None,
         num_analyses=5,
         max_iterations=6,
         prompt_dir=None,
